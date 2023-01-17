@@ -1,9 +1,11 @@
 import path from 'path';
-
 import express, { Request, Response, NextFunction } from 'express';
+
+import { api } from './api';
 
 const app = express();
 
+// static routes for front end
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.get("/", (req: Request, res: Response, next: NextFunction): void => {
@@ -14,9 +16,9 @@ app.get("/", (req: Request, res: Response, next: NextFunction): void => {
   }
 });
 
-const PORT = 3000;
+// mount api
+app.use('/api', api);
 
-app.listen(PORT, () => {
-    console.log(`App listening on port ${PORT}`)
-});
-
+export {
+  app
+};
