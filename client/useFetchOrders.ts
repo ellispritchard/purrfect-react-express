@@ -9,6 +9,7 @@ export enum OrderStatus {
 }
 
 export type Order = {
+  order_id: number;
   order_placed: Date;
   product_name: string;
   price: number;
@@ -17,6 +18,7 @@ export type Order = {
 
 export type OrderAPIJSON = {
   fields: {
+    order_id: number;
     order_placed: string;
     product_name: string;
     price: number;
@@ -34,6 +36,7 @@ export function mapOrderStatus(s: string): OrderStatus {
 
 export function transformToOrderFields(json: { data: Array<OrderAPIJSON> }): Array<Order> {
   return json.data.map((o: OrderAPIJSON) => ({
+    order_id: o.fields.order_id,
     order_placed: new Date(o.fields.order_placed),
     product_name: o.fields.product_name,
     price: o.fields.price,

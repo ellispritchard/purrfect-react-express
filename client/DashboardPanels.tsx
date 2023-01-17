@@ -4,6 +4,8 @@ import { Grid } from './components/Grid';
 import { useFetchOrders } from './useFetchOrders';
 import { TotalOrdersPanel } from './orderpanels/TotalOrders';
 import { PopularProductsPanel } from './orderpanels/PopularProducts';
+import { RecentOrdersPanel } from './orderpanels/RecentOrders';
+import { Loadable } from './components/Loading';
 
 export type DashboardPanels = {
   year: number;
@@ -18,12 +20,20 @@ export const DashboardPanels = ({ year }: DashboardPanels) => {
   return (
     <Grid>
       <GridCell>
-        {isLoading ? <div>fetching...</div> : <TotalOrdersPanel orders={orders || []} />}
+        <Loadable loading={isLoading}>
+          <TotalOrdersPanel orders={orders || []} />
+        </Loadable>
       </GridCell>
       <GridCell>
-        {isLoading ? <div>fetching...</div> : <PopularProductsPanel orders={orders || []} />}
+        <Loadable loading={isLoading}>
+          <PopularProductsPanel orders={orders || []} />
+        </Loadable>
       </GridCell>
-      <GridCell><div>3</div></GridCell>
+      <GridCell>
+        <Loadable loading={isLoading}>
+          <RecentOrdersPanel orders={orders || []} />
+        </Loadable>
+      </GridCell>
     </Grid>
   );
 }

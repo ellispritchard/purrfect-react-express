@@ -51,7 +51,7 @@ router.get('/orders',
       console.log(params);
       try {
         const filters: SelectParams = {
-          fields: ['order_placed', 'product_name', 'price', 'order_status'],
+          fields: ['order_id','order_placed', 'product_name', 'price', 'order_status'],
           sort: [{ field: 'order_placed', direction: 'desc' }],
           ...(params.q ? { filterByFormula: params.q } : {}),
           ...(params.limit ? { maxRecords: Number.parseInt(params.limit) } : {}),

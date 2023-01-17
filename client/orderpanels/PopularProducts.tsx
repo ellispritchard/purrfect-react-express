@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Title } from './Title';
 import { Order } from "../useFetchOrders";
 
 export type PopularProductsPanelProps = {
@@ -21,7 +22,7 @@ export const PopularProductsPanel = ({ orders }: PopularProductsPanelProps) => {
     const entries = topFive.map(([product, count], index) => <li key={`index_${index}`}>{product} ({count})</li>);
 
     return <div>
-        <h3>Popular Products</h3>
+        <Title>Popular Products</Title>
         <ol className='list-decimal list-inside'>
             {entries}
         </ol>

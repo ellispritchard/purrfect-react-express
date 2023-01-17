@@ -5,8 +5,8 @@ import { Dashboard } from './Dashboard';
 export function DashboardContainer() {
     const { range, error, isLoading } = useOrderRange();
     
-    if (error) return <div>failed to load</div>
-    if (isLoading) return <div>loading...</div>
+    if (error) return <div>failed to load: {error.toString()}</div>
+    if (isLoading) return <div>Loading...</div>
   
     const startDate = new Date(range.data.startDate);
     const endDate = new Date(range.data.endDate);
