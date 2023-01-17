@@ -3,7 +3,8 @@ const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
+  devtool: 'source-map',
   entry: "./client/index.tsx",
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
@@ -29,9 +30,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Purrfect Dashboard (development)',
+      title: 'Purrfect Dashboard',
       template: 'client/index.ejs'
     }),
   ],
-  
 };

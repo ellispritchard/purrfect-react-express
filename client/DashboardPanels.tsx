@@ -18,10 +18,10 @@ export const DashboardPanels = ({ year }: DashboardPanels) => {
   return (
     <Grid>
       <GridCell>
-        {isLoading ? <div>...</div> : <TotalOrdersPanel orders={orders || []} />}
+        {isLoading ? <div>fetching...</div> : <TotalOrdersPanel orders={orders || []} />}
       </GridCell>
       <GridCell>
-        {isLoading ? <div>...</div> : <PopularProductsPanel orders={orders || []} />}
+        {isLoading ? <div>fetching...</div> : <PopularProductsPanel orders={orders || []} />}
       </GridCell>
       <GridCell><div>3</div></GridCell>
     </Grid>
